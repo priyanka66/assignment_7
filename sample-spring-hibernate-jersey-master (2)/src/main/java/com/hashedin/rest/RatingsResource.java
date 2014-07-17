@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hashedin.model.MoviesByProfession;
 import com.hashedin.model.Ratings;
 import com.hashedin.model.topRatedMovies;
 import com.hashedin.service.RatingsService;
@@ -91,5 +92,19 @@ public class RatingsResource {
 			}
 			return topMovies;
 		}
+		
+		 @GET
+			@Produces({ MediaType.APPLICATION_JSON })
+			@Path("/getmoviesbypro")
+			public List<MoviesByProfession>getMoviesByProfession() {
+				System.out.println(".........." + ratingsService.getMoviesByProfession());
+				List<MoviesByProfession> movies = ratingsService.getMoviesByProfession();
+				List<MoviesByProfession> topMovies  = new ArrayList<>();
+				for(Object movie: movies)
+				{
+					topMovies.add((MoviesByProfession) movie);
+				}
+				return topMovies;
+			}
 
 }

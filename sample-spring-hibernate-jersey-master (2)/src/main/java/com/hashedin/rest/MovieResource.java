@@ -2,6 +2,7 @@ package com.hashedin.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hashedin.model.Movie;
+import com.hashedin.model.MoviesByProfession;
 import com.hashedin.model.Ratings;
 import com.hashedin.model.movieByYear;
 import com.hashedin.service.MovieService;
@@ -84,13 +86,28 @@ public class MovieResource {
 	
 	@GET
 	@Path("/moviesByYear")
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON })
 	public List<movieByYear> list() {
-		// Handles GET on /Movies. Lists all the Movies we have in our
-		// system.
-		return movieService.getMovieByYear();
+		System.out.println(".........." + movieService.getMovieByYear());
+		List<movieByYear> movies = movieService.getMovieByYear();
+		List<movieByYear> topMovies  = new ArrayList<>();
+		for(Object movie: movies)
+		{
+			topMovies.add((movieByYear) movie);
+		}
+		return topMovies;
 	}
     
+//	public List<MoviesByProfession>getMoviesByProfession() {
+//		System.out.println(".........." + ratingsService.getMoviesByProfession());
+//		List<MoviesByProfession> movies = ratingsService.getMoviesByProfession();
+//		List<MoviesByProfession> topMovies  = new ArrayList<>();
+//		for(Object movie: movies)
+//		{
+//			topMovies.add((MoviesByProfession) movie);
+//		}
+//		return topMovies;
+//	}
 //	@GET
 //	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 //	@Path("/{movieId}/tasks")

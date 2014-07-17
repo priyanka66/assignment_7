@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hashedin.model.Movie;
+import com.hashedin.model.MoviesByProfession;
 import com.hashedin.model.Ratings;
 import com.hashedin.model.topRatedMovies;
 import com.hashedin.repository.RatingsRepository;
@@ -51,6 +52,12 @@ public class RatingsServiceImpl implements RatingsService {
 	public List<topRatedMovies> getMovies() {
 		// TODO Auto-generated method stub
 		return ratingsRepository.getMovies();
+	}
+
+	@Override
+	public List<MoviesByProfession> getMoviesByProfession() {
+		// TODO Auto-generated method stub
+		return ratingsRepository.getMoviesByProfession();
 	}
 
 }

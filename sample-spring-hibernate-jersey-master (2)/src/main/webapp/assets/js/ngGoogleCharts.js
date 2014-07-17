@@ -14,6 +14,13 @@ googleChart.directive("googleChart",function(){
 
             var googleChart = new google.visualization[$attr.googleChart]($elem[0]);
             googleChart.draw(dt,options);
+            
+            // there was a problem in binding the objects, so this code was written, but it has performance issues
+            $scope.$watch(function() {
+            	return $scope[$attr.ngModel].dataTable.tf;
+            }, function(newValue) {
+            	googleChart.draw($scope[$attr.ngModel].dataTable,options);
+            }, true);
         }
     };
 });
