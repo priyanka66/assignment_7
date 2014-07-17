@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ratings")
 @NamedQueries({
 		@NamedQuery(name = "Ratings.findAll", query = "SELECT r FROM Ratings r"),
-		@NamedQuery(name="Ratings.getMovies",query = "select NEW com.hashedin.model.topRatedMovies(r.ratings, count(r.user)) from Ratings r group by r.ratings")})
+		@NamedQuery(name="Ratings.getMovies",query = "select NEW com.hashedin.model.topRatedMovies(m.movieName ,r.ratings , count(r.user)) from Ratings r , Movie m group by r.ratings")})
 public class Ratings {
 
 	@ManyToOne

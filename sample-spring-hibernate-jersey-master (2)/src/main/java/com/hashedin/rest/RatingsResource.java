@@ -79,7 +79,7 @@ public class RatingsResource {
 		return ratingsService.delete(ratingId);
 	}
 	 @GET
-		@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+		@Produces({ MediaType.APPLICATION_JSON })
 		@Path("/getmovies")
 		public List<topRatedMovies> getMovies() {
 			System.out.println(".........." + ratingsService.getMovies());

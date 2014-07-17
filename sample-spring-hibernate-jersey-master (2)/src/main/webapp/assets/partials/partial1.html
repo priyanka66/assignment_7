@@ -1,0 +1,70 @@
+
+<div class= "container-fluid borders">
+<div ng-controller='ProjectDetails'>
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title"> Project Details</h3>
+        </div>
+        
+	<div class="modal-body">
+         <label class="col-md-12"> Project Name</label>
+			<div class="col-md-9" id="name">
+				<input type="text" class="form-control" id="name"
+					placeholder=" Project Name" required="required" ng-model="newProject.name" />
+			</div>
+
+			<label class="col-md-12 ">Description</label>
+			<div class="col-md-9">
+				<input type="text" class="form-control" id="description"
+					placeholder="Enter Description" multiple="multiple" ng-model="newProject.description" />
+			</div>
+
+			<label class="col-md-12">Add collaborators</label>
+			<div class="col-md-9">
+				<input type="text" class="form-control" name="collaborators"
+					placeholder=" collaborators" ng-model="newProject.coordinators"/>
+			</div>
+ 
+        </div>
+
+        <div class="modal-footer">
+ 				<button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>           
+        </div>
+    </script>
+
+    <button class="btn btn-default" ng-click="open()">Create Project!</button>
+        
+
+
+
+
+<div class="row">
+<div class="col-md-12">
+<table  class="table table-bordered">
+	<thead>
+	<tr>	
+		<th>Project Name</th>
+		<th>Description</th>
+		<th>Collaborators</th>
+		<th>Select</th>
+	
+	</tr>
+	</thead>
+	<tr ng-repeat="project in projects" ng-model="projects">
+		<td>{{project.name}}</td>
+		<td>{{project.description}}</td>
+		<td ><span ng-repeat="coordinator in project.coordinators">
+			{{coordinator}} <span ng-show="!$last">, </span> 
+			</span>
+		</td>
+		<td><div class="radio">
+		<a href="#/view2/{{project.name}}"> <input id="checkSlave" type="radio"> </a>
+		</td>
+		</div>		
+	</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
