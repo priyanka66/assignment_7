@@ -8,6 +8,7 @@ public class MoviesByReviews {
 	private Long count;
 	private String movieName;
 
+	
 	public MoviesByReviews(String movieName,Long count ) {
 		this.count = count;
 		this.movieName = movieName;

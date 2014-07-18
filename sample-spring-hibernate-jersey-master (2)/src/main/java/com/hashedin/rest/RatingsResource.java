@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hashedin.model.MoviesByProfession;
+import com.hashedin.model.MoviesByReviews;
 import com.hashedin.model.Ratings;
 import com.hashedin.model.topRatedMovies;
 import com.hashedin.service.RatingsService;
@@ -44,7 +45,8 @@ public class RatingsResource {
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Path("/{ratingId}")
 	public Ratings get(@PathParam("ratingId") Long ratingId) {
-		// Handles GET on /ratings/{ratingId}. Returns a single rating for the given
+		// Handles GET on /ratings/{ratingId}. Returns a single rating for the
+		// given
 		// ratingId.
 		return ratingsService.find(ratingId);
 	}
@@ -59,7 +61,8 @@ public class RatingsResource {
 		// repository.
 		ratingsService.save(rating);
 		response.setStatus(Response.Status.CREATED.getStatusCode());
-		return Response.created(new URI("/ratings/" + rating.getRatingId())).build();
+		return Response.created(new URI("/ratings/" + rating.getRatingId()))
+				.build();
 	}
 
 	@PUT
@@ -67,7 +70,8 @@ public class RatingsResource {
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public Ratings update(Ratings rating, @PathParam("ratingId") Long ratingId) {
-		// Handles PUT on /ratings/ratingId. Updates the existing rating with the new
+		// Handles PUT on /ratings/ratingId. Updates the existing rating with
+		// the new
 		// values.
 		return ratingsService.update(rating, ratingId);
 	}
@@ -79,32 +83,47 @@ public class RatingsResource {
 		// returns the same.
 		return ratingsService.delete(ratingId);
 	}
-	 @GET
-		@Produces({ MediaType.APPLICATION_JSON })
-		@Path("/getmovies")
-		public List<topRatedMovies> getMovies() {
-			System.out.println(".........." + ratingsService.getMovies());
-			List<topRatedMovies> movies = ratingsService.getMovies();
-			List<topRatedMovies> topMovies  = new ArrayList<>();
-			for(Object movie: movies)
-			{
-				topMovies.add((topRatedMovies) movie);
-			}
-			return topMovies;
+
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/getmovies")
+	public List<topRatedMovies> getMovies() {
+		System.out.println(".........." + ratingsService.getMovies());
+		List<topRatedMovies> movies = ratingsService.getMovies();
+		List<topRatedMovies> topMovies = new ArrayList<>();
+		for (Object movie : movies) {
+			topMovies.add((topRatedMovies) movie);
 		}
-		
-		 @GET
-			@Produces({ MediaType.APPLICATION_JSON })
-			@Path("/getmoviesbypro")
-			public List<MoviesByProfession>getMoviesByProfession() {
-				System.out.println(".........." + ratingsService.getMoviesByProfession());
-				List<MoviesByProfession> movies = ratingsService.getMoviesByProfession();
-				List<MoviesByProfession> topMovies  = new ArrayList<>();
-				for(Object movie: movies)
-				{
-					topMovies.add((MoviesByProfession) movie);
-				}
-				return topMovies;
-			}
+		return topMovies;
+	}
+
+	@GET
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/getmoviesbypro")
+	public List<MoviesByProfession> getMoviesByProfessions() {
+		System.out.println(".........."
+				+ ratingsService.getMoviesByProfession());
+		List<MoviesByProfession> movies = ratingsService
+				.getMoviesByProfession();
+		List<MoviesByProfession> topMovies = new ArrayList<>();
+		for (Object movie : movies) {
+			topMovies.add((MoviesByProfession) movie);
+		}
+		return topMovies;
+	}
+	
+//	@GET
+//	@Produces({ MediaType.APPLICATION_JSON })
+//	@Path("/getmoviesbyrating")
+//	public List<MoviesByReviews> getMoviesByRatings() {
+//		System.out.println(".........."
+//				+ ratingsService.getMoviesByRatings());
+//		List<MoviesByReviews> movies = ratingsService.getMoviesByRatings();
+//		List<MoviesByReviews> topMovies = new ArrayList<>();
+//		for (Object movie : movies) {
+//			topMovies.add((MoviesByReviews) movie);
+//		}
+//		return topMovies;
+//	}
 
 }

@@ -1,5 +1,6 @@
 package com.hashedin.rest;
 
+import java.io.Console;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -90,12 +91,14 @@ public class MovieResource {
 	public List<movieByYear> list() {
 		System.out.println(".........." + movieService.getMovieByYear());
 		List<movieByYear> movies = movieService.getMovieByYear();
-		List<movieByYear> topMovies  = new ArrayList<>();
-		for(Object movie: movies)
-		{
-			topMovies.add((movieByYear) movie);
-		}
-		return topMovies;
+		System.out.println(movies);
+//		List<movieByYear> topMovies  = new ArrayList<>();
+//		
+//		for(Object movie: movies)
+//		{
+//			topMovies.add((movieByYear) movie);
+//		}
+		return movies;
 	}
     
 //	public List<MoviesByProfession>getMoviesByProfession() {

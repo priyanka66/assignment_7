@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
 		@NamedQuery(name = "Movie.findAll", query = "SELECT m FROM Movie m"),
 		@NamedQuery(name = "Movie.movieByYear", query = "SELECT NEW com.hashedin.model.movieByYear(count(m.movieName),m.movieYear)"
-				+ " from Movie m group by m.movieYear having m.movieYear>= :startYear and m.movieYear<=:endYear")})
+				+ " from Movie m group by m.movieYear having m.movieYear>="+1992+ "and m.movieYear<="+1997)})
 public class Movie {
 
 /*	@XmlInverseReference(mappedBy="movie")

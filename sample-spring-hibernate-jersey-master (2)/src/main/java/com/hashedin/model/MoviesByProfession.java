@@ -7,11 +7,11 @@ public class MoviesByProfession {
 
 	
 	private Long count;
-	private String movieName;
+	private String profession;
 
-	public MoviesByProfession(String movieName, Long count) {
+	public MoviesByProfession(String profession, Long count) {
 		this.count = count;
-		this.movieName = movieName;
+		this.profession = profession;
 	}
 
 	public Long getCount() {
@@ -21,13 +21,15 @@ public class MoviesByProfession {
 	public void setCount(Long count) {
 		this.count = count;
 	}
+	
 
-	public String getMovieName() {
-		return movieName;
+
+	public String getProfession() {
+		return profession;
 	}
 
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
+	public void setProfession(String profession) {
+		this.profession = profession;
 	}
 
 	public MoviesByProfession() {

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hashedin.model.Movie;
 import com.hashedin.model.MoviesByProfession;
+import com.hashedin.model.MoviesByReviews;
 import com.hashedin.model.Ratings;
 import com.hashedin.model.topRatedMovies;
 
@@ -58,7 +59,7 @@ public class RatingsRepositoryImpl implements RatingsRepository {
 	public List<topRatedMovies> getMovies() {
 		TypedQuery<topRatedMovies> query = em
 				.createNamedQuery("Ratings.getMovies", topRatedMovies.class);
-		List<topRatedMovies> results = query.setFirstResult(0).setMaxResults(20).getResultList();
+		List<topRatedMovies> results = query.setFirstResult(0).setMaxResults(6).getResultList();
 		System.out.println("\n\n\nList of movies " + results);
 		return results;
 		
@@ -68,10 +69,20 @@ public class RatingsRepositoryImpl implements RatingsRepository {
 	public List<MoviesByProfession> getMoviesByProfession() {
 		TypedQuery<MoviesByProfession> query = em
 				.createNamedQuery("Ratings.getMovieByProfession", MoviesByProfession.class);
-		List<MoviesByProfession> results = query.setFirstResult(0).setMaxResults(20).getResultList();
+		List<MoviesByProfession> results = query.setFirstResult(0).setMaxResults(5).getResultList();
 		System.out.println("\n\n\nList of movies " + results);
 		return results;
-		
 	}
+//
+//	@Override
+//	public List<MoviesByReviews> getMoviesByRatings() {
+//		TypedQuery query = em
+//				.createNamedQuery("Ratings.moviesByRatings",MoviesByReviews.class);
+//		List<MoviesByReviews> results = query.setFirstResult(0).setMaxResults(20).getResultList();
+//		System.out.println("\n\n\nList of movies " + results);
+//		return results;
+//	}
+//
+//	
 
 }

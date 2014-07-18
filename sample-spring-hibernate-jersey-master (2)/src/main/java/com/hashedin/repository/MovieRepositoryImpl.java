@@ -63,12 +63,12 @@ public class MovieRepositoryImpl implements MovieRepository {
 
 	@Override
 	public List<movieByYear> getMovieByYear() {
-		TypedQuery<movieByYear> query = em.createNamedQuery("Movie.movieByYear",movieByYear.class)
-				.setParameter("startYear", "1992")
-				.setParameter("endYear", "1997");
+		TypedQuery<movieByYear> query = em.createNamedQuery("Movie.movieByYear",movieByYear.class);
+//				.setParameter("startYear", "1992")
+//				.setParameter("endYear", "1997");
 		List<movieByYear> results = query.getResultList();
 		System.out.println(results);
-		return null;
+		return results;
 	}
 
 	

@@ -29,11 +29,13 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 
 	$scope.data3 = {};
 	$scope.data3.dataTable = new google.visualization.DataTable();
-	$scope.data3.dataTable.addColumn("number", "ratings");
-	$scope.data3.dataTable.addColumn("number", "count");
-	$scope.data3.dataTable.addRow([ 1, 122 ]);
-	$scope.data3.dataTable.addRow([ 2, 233 ]);
-	$scope.data3.dataTable.addRow([ 3, 333 ]);
+	$scope.data3.dataTable.addColumn("string", "Name");
+	$scope.data3.dataTable.addColumn("number", "Qty");
+	$scope.data3.title="Number of movies based on Year";
+
+//	$scope.data3.dataTable.addRow([ 1, 122 ]);
+//	$scope.data3.dataTable.addRow([ 2, 233 ]);
+//	$scope.data3.dataTable.addRow([ 3, 333 ]);
 
 	$scope.items = [];
 
@@ -64,16 +66,37 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 			"Content-Type" : "application/json"
 		}
 	}).success(
-			function(data1, status) {
-				$scope.items1 = data1;
+			function(data4, status) {
+				$scope.items1 = data4;
 				console.log($scope.items1);
 
 				for (var i = 0; i < $scope.items1.length; i++) {
-					$scope.data2.dataTable.addRow([ $scope.items1[i].movieName,
+					$scope.data2.dataTable.addRow([ $scope.items1[i].profession,
 							$scope.items1[i].count ]);
 				}
 
 			}).error(function(data1, status) {
+		alert("Error");
+	});
+	
+	$scope.items2=[];
+	$http({
+		method : 'GET',
+		url : 'http://localhost:8080/api/movies/moviesByYear',
+		headers : {
+			"Content-Type" : "application/json"
+		}
+	}).success(
+			function(data5, status) {
+				$scope.items2 = data5;
+				console.log($scope.items2);
+
+				for (var i = 0; i < $scope.items2.length; i++) {
+					$scope.data3.dataTable.addRow([ $scope.items2[i].year,
+							$scope.items2[i].count ]);
+				}
+
+			}).error(function(data5, status) {
 		alert("Error");
 	});
 

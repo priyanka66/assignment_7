@@ -23,12 +23,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
 		@NamedQuery(name = "Ratings.findAll", query = "SELECT r FROM Ratings r"),
 		@NamedQuery(name="Ratings.getMovies",query = "select NEW com.hashedin.model.topRatedMovies"
-				+ "(m.movieName ,r.ratings , count(r.user)) from Ratings r , Movie m group by m.movieId"),
+				+ "(m.movieName ,r.ratings , count(u.userId)) from Ratings r , Movie m, User u group by r.movie"),
 		@NamedQuery(name="Ratings.getMovieByProfession",query="SELECT NEW com.hashedin.model.MoviesByProfession"
-				+ "(m.movieName,count(r.user)) from Ratings r ,Movie m , User u group by u.profession"),
-		@NamedQuery(name="Ratings.getMoviesByRatings",query="SELECT m.movieName, SUM(r.ratings) from Ratings r,Movie m group by m.movieId ")})
+				+ "(u.profession,count(m.movieId)) from Ratings r ,Movie m , User u group by u.profession"),
+		@NamedQuery(name="Ratings.getMoviesByRatings", query ="SELECT NEW com.hashedin.model.MoviesByReviews"
+				+ " (m.movieName ,sum(r.ratings)) from Movie m , Ratings r group by m.movieId")})
 public class Ratings {
-
+	//
 	@ManyToOne
 	@JoinColumn(name="userId",referencedColumnName="userId")
 	private User user;
