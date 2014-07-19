@@ -9,9 +9,10 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import com.hashedin.model.Movie;
+//import com.hashedin.model.Movie;
 import com.hashedin.model.MoviesByProfession;
-import com.hashedin.model.MoviesByReviews;
+///import com.hashedin.model.MoviesByReviews;
+//import com.hashedin.model.MoviesByReviews;
 import com.hashedin.model.Ratings;
 import com.hashedin.model.topRatedMovies;
 
@@ -73,16 +74,17 @@ public class RatingsRepositoryImpl implements RatingsRepository {
 		System.out.println("\n\n\nList of movies " + results);
 		return results;
 	}
-//
+
 //	@Override
 //	public List<MoviesByReviews> getMoviesByRatings() {
-//		TypedQuery query = em
-//				.createNamedQuery("Ratings.moviesByRatings",MoviesByReviews.class);
-//		List<MoviesByReviews> results = query.setFirstResult(0).setMaxResults(20).getResultList();
+//		TypedQuery<MoviesByReviews> query = em
+//				.createNamedQuery("Ratings.getMoviesByRatings", MoviesByReviews.class);
+//		List<MoviesByReviews> results = query.setFirstResult(0).setMaxResults(5).getResultList();
 //		System.out.println("\n\n\nList of movies " + results);
 //		return results;
 //	}
-//
 //	
 
 }
+
+

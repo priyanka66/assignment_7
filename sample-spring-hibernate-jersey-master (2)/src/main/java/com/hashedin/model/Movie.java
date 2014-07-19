@@ -29,6 +29,8 @@ public class Movie {
 	private String movieName;
 
 	private String movieYear;
+	
+	
 
 	public Long getMovieId() {
 		return movieId;

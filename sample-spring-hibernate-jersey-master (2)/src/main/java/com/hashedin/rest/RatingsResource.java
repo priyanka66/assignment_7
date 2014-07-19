@@ -3,6 +3,7 @@ package com.hashedin.rest;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.hashedin.model.MoviesByProfession;
-import com.hashedin.model.MoviesByReviews;
+//import com.hashedin.model.MoviesByReviews;
 import com.hashedin.model.Ratings;
 import com.hashedin.model.topRatedMovies;
 import com.hashedin.service.RatingsService;
@@ -88,9 +89,11 @@ public class RatingsResource {
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/getmovies")
 	public List<topRatedMovies> getMovies() {
+		System.out.println("Before " + new Date());
 		System.out.println(".........." + ratingsService.getMovies());
 		List<topRatedMovies> movies = ratingsService.getMovies();
 		List<topRatedMovies> topMovies = new ArrayList<>();
+		System.out.println("After " + new Date());
 		for (Object movie : movies) {
 			topMovies.add((topRatedMovies) movie);
 		}

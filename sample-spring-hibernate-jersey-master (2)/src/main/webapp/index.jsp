@@ -18,7 +18,7 @@
      	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-        <link href="assets/css/style.css" rel="stylesheet">
+       <!--  <link href="assets/css/style.css" rel="stylesheet">  -->
         
     <title>
     </title>
@@ -27,7 +27,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.js" type="text/javascript"></script>
     <script src="https://www.google.com/jsapi" type="text/javascript"></script>
     <script src="assets/js/main.js" type="text/javascript"></script>
-     <script src="assets/js/main1.js" type="text/javascript"></script>
+    
     
      <script src="assets/js/app.js" type="text/javascript"></script>
     <script src="assets/js/ngGoogleCharts.js" type="text/javascript"></script>
@@ -58,7 +58,7 @@
         	<div google-chart="PieChart" ng-model="data2" class="bigGraph"></div>
         </div>
          <div class=col-md-6>
-        	<div google-chart="BarChart" ng-model="data3" class="bigGraph"></div>
+        	<div google-chart="ColumnChart" ng-model="data3" class="bigGraph"></div>
 		</div>      
     	
     

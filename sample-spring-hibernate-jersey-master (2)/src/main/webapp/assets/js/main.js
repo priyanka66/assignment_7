@@ -16,7 +16,7 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 	$scope.data1 = {};
 	$scope.data1.dataTable = new google.visualization.DataTable();
 	$scope.data1.dataTable.addColumn("string", "Name");
-	$scope.data1.dataTable.addColumn("number", "Qty");
+	$scope.data1.dataTable.addColumn("number", "Ratings");
 	$scope.data1.title="Top 20 movies based on review";
 	
 	
@@ -29,8 +29,8 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 
 	$scope.data3 = {};
 	$scope.data3.dataTable = new google.visualization.DataTable();
-	$scope.data3.dataTable.addColumn("string", "Name");
-	$scope.data3.dataTable.addColumn("number", "Qty");
+	$scope.data3.dataTable.addColumn("string", "Movies");
+	$scope.data3.dataTable.addColumn("number", "Year");
 	$scope.data3.title="Number of movies based on Year";
 
 //	$scope.data3.dataTable.addRow([ 1, 122 ]);

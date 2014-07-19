@@ -10,7 +10,7 @@ public class MoviesByReviews {
 
 	
 	public MoviesByReviews(String movieName,Long count ) {
-		this.count = count;
+		this.count += count;
 		this.movieName = movieName;
 	}
 
