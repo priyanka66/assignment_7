@@ -33,10 +33,11 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 	$scope.data3.dataTable.addColumn("number", "Year");
 	$scope.data3.title="Number of movies based on Year";
 
+	
 //	$scope.data3.dataTable.addRow([ 1, 122 ]);
 //	$scope.data3.dataTable.addRow([ 2, 233 ]);
 //	$scope.data3.dataTable.addRow([ 3, 333 ]);
-
+//	$scope.value = new Date ();
 	$scope.items = [];
 
 	$http({
@@ -49,8 +50,8 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 			function(data, status) {
 				$scope.items = data;
 				console.log($scope.items);
-
 				for (var i = 0; i < $scope.items.length; i++) {
+					
 					$scope.data1.dataTable.addRow([ $scope.items[i].movieName,
 							$scope.items[i].count ]);
 				}
@@ -69,7 +70,7 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 			function(data4, status) {
 				$scope.items1 = data4;
 				console.log($scope.items1);
-
+				
 				for (var i = 0; i < $scope.items1.length; i++) {
 					$scope.data2.dataTable.addRow([ $scope.items1[i].profession,
 							$scope.items1[i].count ]);
@@ -78,7 +79,11 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 			}).error(function(data1, status) {
 		alert("Error");
 	});
+//	var years = element(by.model('startDate'));
 	
+	$scope.startDate =1992;
+	$scope.endDate =1995;
+	console.log($scope.startDate);
 	$scope.items2=[];
 	$http({
 		method : 'GET',
@@ -89,11 +94,15 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 	}).success(
 			function(data5, status) {
 				$scope.items2 = data5;
+				
 				console.log($scope.items2);
-
+				
 				for (var i = 0; i < $scope.items2.length; i++) {
-					$scope.data3.dataTable.addRow([ $scope.items2[i].year,
+						if (($scope.items2[i].year >= $scope.startDate) && ($scope.items2[i].year <= $scope.endDate))
+							{
+						$scope.data3.dataTable.addRow([ $scope.items2[i].year,
 							$scope.items2[i].count ]);
+							}
 				}
 
 			}).error(function(data5, status) {

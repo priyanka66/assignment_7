@@ -24,6 +24,7 @@ public interface RatingsService {
 	
 	List<MoviesByProfession> getMoviesByProfession();
 	
+//	List<String> moviesByRate();
 //	List<MoviesByReviews> getMoviesByRatings();
 	
 }

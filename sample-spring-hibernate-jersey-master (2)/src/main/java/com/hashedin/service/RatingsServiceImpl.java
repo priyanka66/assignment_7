@@ -62,6 +62,11 @@ public class RatingsServiceImpl implements RatingsService {
 	}
 
 //	@Override
+//	public List<String> moviesByRate() {
+//		return ratingsRepository.moviesByRating();
+//	}
+
+//	@Override
 //	public List<MoviesByReviews> getMoviesByRatings() {
 //		return ratingsRepository.getMoviesByRatings();
 //	}

@@ -39,7 +39,7 @@
     </style>
     
   </head>
-  <body ng-controller="IndexCtrl">
+  <body ng-controller="IndexCtrl" ng-app>
 		<div style="padding-top:70px;"> 
   		<div class="top-header navbar navbar-inverse navbar-fixed-top row" >
                 <div>
@@ -48,14 +48,27 @@
                        
                     </div>
                 </div>
+              <!-- <h4><span style="color:#000;font-weight:bold">Due Date:<input type="date" ng-model="myDate"></span></h4> -->
+              <form name="myForm" ng-controller="IndexCtrl">
+               Start Year <input type ="text" ng-model="startDate" ng-change = " " id="date1" />
+               End Year:<input type="text" ng-model="endDate"/>
+                       <input type ="submit"/>        
+              </form>		
+               <span ng-repeat="i in items2 	">
+                 <p>{{i.year}}</p>
+           	</span>
+           	
+           	<p>{{startDate}}</p>
+            				
               
-            </div>
-            </div>
+               </div>
+            
             <div class="col-md-6" bgcolor="black"> 
             		   <div google-chart="PieChart" ng-model="data1" class="bigGraph" bgcolor="black" ></div>
              </div>
           <div class=col-md-6>
         	<div google-chart="PieChart" ng-model="data2" class="bigGraph"></div>
+        	
         </div>
          <div class=col-md-6>
         	<div google-chart="ColumnChart" ng-model="data3" class="bigGraph"></div>

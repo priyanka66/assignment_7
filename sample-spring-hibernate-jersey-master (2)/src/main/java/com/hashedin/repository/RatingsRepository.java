@@ -24,6 +24,8 @@ public interface RatingsRepository {
 
 	List<MoviesByProfession> getMoviesByProfession();
 
+//	List<String> moviesByRate();
+
 	//List<MoviesByReviews> getMoviesByRatings();
     
 	

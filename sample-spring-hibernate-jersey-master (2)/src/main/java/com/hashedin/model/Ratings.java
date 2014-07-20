@@ -22,26 +22,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "ratings")
 @NamedQueries({
 		@NamedQuery(name = "Ratings.findAll", query = "SELECT r FROM Ratings r"),
-		@NamedQuery(name="Ratings.getMovies",query = "select NEW com.hashedin.model.topRatedMovies"
-				+ "(m.movieName ,r.ratings , count(r.ratings)) from Ratings r join r.movie m on r.movieId=m.movieId group by m.movieId"),
-		@NamedQuery(name="Ratings.getMovieByProfession",query="SELECT NEW com.hashedin.model.MoviesByProfession"
-				+ "(u.profession,count(m.movieId)) from Ratings r ,Movie m , User u group by u.profession"),
-				})
-
+		@NamedQuery(name = "Ratings.getMovies", query = "select NEW com.hashedin.model.topRatedMovies"
+				+ "(m.movieName ,r.ratings , count(r.ratings)) from Ratings r join r.movie m group by m.movieId "),
+		@NamedQuery(name = "Ratings.getMovieByProfession", query = "SELECT NEW com.hashedin.model.MoviesByProfession"
+				+ "(u.profession,count(m.movieId)) from Ratings r,Movie m , User u group by u.profession"), })
 public class Ratings {
-	
+
 	@ManyToOne
-	@JoinColumn(name="userId",referencedColumnName="userId")
+	@JoinColumn(name = "userId", referencedColumnName = "userId")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name="movieId",referencedColumnName="movieId")
+	@JoinColumn(name = "movieId", referencedColumnName = "movieId")
 	private Movie movie;
-	
+
 	@Id
 	private Long ratingId;
 
-	private int  ratings;
+	private int ratings;
 
 	public User getUser() {
 		return user;
@@ -74,7 +72,5 @@ public class Ratings {
 	public void setRatings(int ratings) {
 		this.ratings = ratings;
 	}
-
-	
 
 }
