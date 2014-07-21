@@ -70,7 +70,7 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 			function(data4, status) {
 				$scope.items1 = data4;
 				console.log($scope.items1);
-				
+//				$scope.items1=orderBy($scope.items1,count,reverse);
 				for (var i = 0; i < $scope.items1.length; i++) {
 					$scope.data2.dataTable.addRow([ $scope.items1[i].profession,
 							$scope.items1[i].count ]);

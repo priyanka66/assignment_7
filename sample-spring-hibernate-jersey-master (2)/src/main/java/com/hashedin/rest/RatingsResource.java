@@ -22,9 +22,11 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.hashedin.model.MovieByProfession;
 import com.hashedin.model.MoviesByProfession;
 //import com.hashedin.model.MoviesByReviews;
 import com.hashedin.model.Ratings;
+import com.hashedin.model.topRatedMovie;
 import com.hashedin.model.topRatedMovies;
 import com.hashedin.service.RatingsService;
 
@@ -88,31 +90,16 @@ public class RatingsResource {
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/getmovies")
-	public List<topRatedMovies> getMovies() {
-		System.out.println("Before " + new Date());
-		System.out.println(".........." + ratingsService.getMovies());
-		List<topRatedMovies> movies = ratingsService.getMovies();
-		List<topRatedMovies> topMovies = new ArrayList<>();
-		System.out.println("After " + new Date());
-		for (Object movie : movies) {
-			topMovies.add((topRatedMovies) movie);
-		}
-		return topMovies;
+	public List<topRatedMovie> getMovies() {
+
+		return ratingsService.getMovies();
 	}
 
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Path("/getmoviesbypro")
-	public List<MoviesByProfession> getMoviesByProfessions() {
-		System.out.println(".........."
-				+ ratingsService.getMoviesByProfession());
-		List<MoviesByProfession> movies = ratingsService
-				.getMoviesByProfession();
-		List<MoviesByProfession> topMovies = new ArrayList<>();
-		for (Object movie : movies) {
-			topMovies.add((MoviesByProfession) movie);
-		}
-		return topMovies;
+	public List<MovieByProfession> getMoviesByProfessions() {
+			return ratingsService.getMoviesByProfession();
 	}
 	
 //	@GET
