@@ -1,6 +1,7 @@
 package com.hashedin.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.hashedin.model.Movie;
 import com.hashedin.model.MovieByProfession;
@@ -26,7 +27,7 @@ public interface RatingsService {
 	
 	List<MovieByProfession> getMoviesByProfession();
 	
-//	List<String> moviesByRate();
+//	List<Objects[]> moviesByRate();
 //	List<MoviesByReviews> getMoviesByRatings();
 	
 }

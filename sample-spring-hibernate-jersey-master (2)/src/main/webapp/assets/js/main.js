@@ -12,7 +12,7 @@ google.load('visualization', '1', {
 
 var myApp = myApp || angular.module("my-app", [ "google-chart" ]);
 
-myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
+myApp.controller('IndexCtrl', function($scope, $http, $timeout,$filter) {
 	$scope.data1 = {};
 	$scope.data1.dataTable = new google.visualization.DataTable();
 	$scope.data1.dataTable.addColumn("string", "Name");
@@ -34,10 +34,10 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 	$scope.data3.title="Number of movies based on Year";
 
 	
-//	$scope.data3.dataTable.addRow([ 1, 122 ]);
-//	$scope.data3.dataTable.addRow([ 2, 233 ]);
-//	$scope.data3.dataTable.addRow([ 3, 333 ]);
-//	$scope.value = new Date ();
+//		$scope.data3.dataTable.addRow([ '1', 122 ]);
+//		$scope.data3.dataTable.addRow([ '2', 233 ]);
+//		$scope.data3.dataTable.addRow([ '3', 333 ]);
+	//	$scope.value = new Date ();
 	$scope.items = [];
 
 	$http({
@@ -70,7 +70,7 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 			function(data4, status) {
 				$scope.items1 = data4;
 				console.log($scope.items1);
-//				$scope.items1=orderBy($scope.items1,count,reverse);
+				//				$scope.items1=orderBy($scope.items1,count,reverse);
 				for (var i = 0; i < $scope.items1.length; i++) {
 					$scope.data2.dataTable.addRow([ $scope.items1[i].profession,
 							$scope.items1[i].count ]);
@@ -79,34 +79,57 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout) {
 			}).error(function(data1, status) {
 		alert("Error");
 	});
-//	var years = element(by.model('startDate'));
+	//	var years = element(by.model('startDate'));
 	
-	$scope.startDate =1992;
+	$scope.startDate =1993;
 	$scope.endDate =1995;
 	console.log($scope.startDate);
+	$scope.submit=function(){
+		$scope.chart=true;
+//		$scope.data3 = {};
+//		$scope.data3.dataTable = new google.visualization.DataTable();
+//		$scope.data3.dataTable.addColumn("string", "Movies");
+//		$scope.data3.dataTable.addColumn("number", "Year");
+//		$scope.data3.title="Number of movies based on Year";
+	
 	$scope.items2=[];
 	$http({
 		method : 'GET',
-		url : 'http://localhost:8080/api/movies/moviesByYear',
+		url : 'api/movies/moviesByYear?startDate=1990&endDate=2000',
 		headers : {
 			"Content-Type" : "application/json"
 		}
 	}).success(
 			function(data5, status) {
 				$scope.items2 = data5;
-				
+//				$scope.filtered=filterFilter(items2,year);
 				console.log($scope.items2);
 				
 				for (var i = 0; i < $scope.items2.length; i++) {
 						if (($scope.items2[i].year >= $scope.startDate) && ($scope.items2[i].year <= $scope.endDate))
 							{
-						$scope.data3.dataTable.addRow([ $scope.items2[i].year,
-							$scope.items2[i].count ]);
+								$scope.data3.dataTable.addRow([ $scope.items2[i].year,
+								$scope.items2[i].count ]);
 							}
 				}
 
 			}).error(function(data5, status) {
 		alert("Error");
 	});
+}
+}
+//.filter("dateFilter",[function(){
+//	
+//}
+//                  ])
+);
 
+myApp.filter('mySort',function(){
+	return function (input) {
+		if ((input.year >= $scope.startDate) && (input.year <= $scope.endDate))
+			{
+				return input;
+			}
+		
+	}
 });

@@ -21,7 +21,7 @@ public interface MovieRepository {
 
 //	List<int []> moviesbyYear();
 
-	List<movieByYear> getMovieByYear();
+	List<movieByYear> getMovieByYear(String startDate, String endDate);
 
 	//List<Ratings> findByMovieId(Long movieId);
 

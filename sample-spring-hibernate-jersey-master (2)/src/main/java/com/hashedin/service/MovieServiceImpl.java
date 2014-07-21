@@ -54,8 +54,8 @@ public class MovieServiceImpl implements MovieService {
 //	}
 //
 	@Override
-	public List<movieByYear> getMovieByYear() {
-		return MovieRepository.getMovieByYear();
+	public List<movieByYear> getMovieByYear(String startDate,String endDate) {
+		return MovieRepository.getMovieByYear(startDate,endDate);
 	}
 
 

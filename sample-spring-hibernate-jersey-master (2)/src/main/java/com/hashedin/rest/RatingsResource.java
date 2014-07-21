@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
@@ -105,13 +106,13 @@ public class RatingsResource {
 //	@GET
 //	@Produces({ MediaType.APPLICATION_JSON })
 //	@Path("/getmoviesbyrating")
-//	public List<MoviesByReviews> getMoviesByRatings() {
+//	public List<Objects[]> getMoviesByRatings() {
 //		System.out.println(".........."
-//				+ ratingsService.getMoviesByRatings());
-//		List<MoviesByReviews> movies = ratingsService.getMoviesByRatings();
-//		List<MoviesByReviews> topMovies = new ArrayList<>();
+//				+ ratingsService. moviesByRate());
+//		List<Objects[]> movies = ratingsService. moviesByRate();
+//		List<Objects[]> topMovies = new ArrayList<>();
 //		for (Object movie : movies) {
-//			topMovies.add((MoviesByReviews) movie);
+//			topMovies.add((Objects[]) movie);
 //		}
 //		return topMovies;
 //	}

@@ -1,6 +1,7 @@
 package com.hashedin.service;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +63,11 @@ public class RatingsServiceImpl implements RatingsService {
 		// TODO Auto-generated method stub
 		return ratingsRepository.getMoviesByProfession();
 	}
+
+//	@Override
+//	public List<Objects[]> moviesByRate() {
+//		return ratingsRepository.getRatedMovies();
+//	}
 
 //	@Override
 //	public List<String> moviesByRate() {

@@ -1,6 +1,7 @@
 package com.hashedin.repository;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.hashedin.model.Movie;
 import com.hashedin.model.MovieByProfession;
@@ -25,6 +26,8 @@ public interface RatingsRepository {
 	List<topRatedMovie> getMovies();
 
 	List<MovieByProfession> getMoviesByProfession();
+
+//	List<Objects[]> getRatedMovies();
 
 //	List<String> moviesByRate();
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,12 +12,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
-
-
-
-
-
-
 
 import com.hashedin.model.MovieByProfession;
 //import com.hashedin.model.Movie;
@@ -48,9 +43,10 @@ public class RatingsRepositoryImpl implements RatingsRepository {
 	@Override
 	public List<Ratings> findAll() {
 		// Returns all the ratings in our system.
-		TypedQuery<Ratings> query = em
-				.createNamedQuery("Ratings.findAll", Ratings.class);
-		List<Ratings> results = query.setFirstResult(0).setMaxResults(2).getResultList();
+		TypedQuery<Ratings> query = em.createNamedQuery("Ratings.findAll",
+				Ratings.class);
+		List<Ratings> results = query.setFirstResult(0).setMaxResults(2)
+				.getResultList();
 		return results;
 	}
 
@@ -69,81 +65,91 @@ public class RatingsRepositoryImpl implements RatingsRepository {
 
 	@Override
 	public List<topRatedMovie> getMovies() {
-		TypedQuery<topRatedMovies> query = em
-				.createNamedQuery("Ratings.getMovies", topRatedMovies.class);
+		TypedQuery<topRatedMovies> query = em.createNamedQuery(
+				"Ratings.getMovies", topRatedMovies.class);
 		List<topRatedMovies> results = query.getResultList();
-		
+
 		List<topRatedMovie> myList = new ArrayList<topRatedMovie>();
 		List<topRatedMovie> topMovies = new ArrayList<topRatedMovie>();
-		
-		for(topRatedMovies movieList : results){
-			myList.add(new topRatedMovie(movieList.getMovieName(),movieList.getRatings(),((int)(long)movieList.getCount())));
+
+		for (topRatedMovies movieList : results) {
+			myList.add(new topRatedMovie(movieList.getMovieName(), movieList
+					.getRatings(), ((int) (long) movieList.getCount())));
 		}
-		
-		Collections.sort(myList, new Comparator<topRatedMovie>(){
-			public int compare(topRatedMovie first, topRatedMovie second){
+
+		Collections.sort(myList, new Comparator<topRatedMovie>() {
+			public int compare(topRatedMovie first, topRatedMovie second) {
 				return second.getCount().compareTo(first.getCount());
 			}
-		}
-				);
-		
-		for(int topMov=0;topMov<20;topMov++){
+		});
+
+		for (int topMov = 0; topMov < 20; topMov++) {
 			topMovies.add(myList.get(topMov));
 		}
-		
-				System.out.println("\n\n\nList of movies " + results);
+
+		System.out.println("\n\n\nList of movies " + results);
 		return topMovies;
-		
+
 	}
 
 	@Override
 	public List<MovieByProfession> getMoviesByProfession() {
-		TypedQuery<MoviesByProfession> query = em
-				.createNamedQuery("Ratings.getMovieByProfession", MoviesByProfession.class);
+		TypedQuery<MoviesByProfession> query = em.createNamedQuery(
+				"Ratings.getMovieByProfession", MoviesByProfession.class);
 		List<MoviesByProfession> results = query.getResultList();
-		
+
 		List<MovieByProfession> myList = new ArrayList<MovieByProfession>();
-		List<MovieByProfession> topMovies = new ArrayList <MovieByProfession>();
-		
-		for(MoviesByProfession movieList : results){
-			myList.add(new MovieByProfession(movieList.getProfession(),((int)(long)movieList.getCount())));
+		List<MovieByProfession> topMovies = new ArrayList<MovieByProfession>();
+
+		for (MoviesByProfession movieList : results) {
+			myList.add(new MovieByProfession(movieList.getProfession(),
+					((int) (long) movieList.getCount())));
 		}
-		
-		
-		Collections.sort(myList, new Comparator<MovieByProfession>(){
-			public int compare(MovieByProfession first, MovieByProfession second){
+
+		Collections.sort(myList, new Comparator<MovieByProfession>() {
+			public int compare(MovieByProfession first, MovieByProfession second) {
 				return second.getCount().compareTo(first.getCount());
 			}
-		}
-				);
-		
-		for(int topMov=0;topMov<20;topMov++){
+		});
+
+		for (int topMov = 0; topMov < 20; topMov++) {
 			topMovies.add(myList.get(topMov));
 		}
-		
-				System.out.println("\n\n\nList of movies " + results);
+
+		System.out.println("\n\n\nList of movies " + results);
 		return topMovies;
 	}
 
 //	@Override
-//	public List<String> moviesByRate() {
-//		Query query = em
-//				.createQuery("Ratings.getMoviesByRating");
-//		List<String> results = query.setFirstResult(0).setMaxResults(5).getResultList();
+//	public List<Objects[]> getRatedMovies() {
+//		TypedQuery<Objects[]> query = em.createNamedQuery(
+//				"Ratings.getRatedMovie", Objects[].class);
+//		List<Objects[]> results = query.setFirstResult(0)
+//				.setMaxResults(5).getResultList();
 //		System.out.println("\n\n\nList of movies " + results);
 //		return results;
+//
 //	}
 
-//	@Override
-//	public List<MoviesByReviews> getMoviesByRatings() {
-//		TypedQuery<MoviesByReviews> query = em
-//				.createNamedQuery("Ratings.getMoviesByRatings", MoviesByReviews.class);
-//		List<MoviesByReviews> results = query.setFirstResult(0).setMaxResults(5).getResultList();
-//		System.out.println("\n\n\nList of movies " + results);
-//		return results;
-//	}
-//	
+	// @Override
+	// public List<String> moviesByRate() {
+	// Query query = em
+	// .createQuery("Ratings.getMoviesByRating");
+	// List<String> results =
+	// query.setFirstResult(0).setMaxResults(5).getResultList();
+	// System.out.println("\n\n\nList of movies " + results);
+	// return results;
+	// }
+
+	// @Override
+	// public List<MoviesByReviews> getMoviesByRatings() {
+	// TypedQuery<MoviesByReviews> query = em
+	// .createNamedQuery("Ratings.getMoviesByRatings", MoviesByReviews.class);
+	// List<MoviesByReviews> results =
+	// query.setFirstResult(0).setMaxResults(5).getResultList();
+	// System.out.println("\n\n\nList of movies " + results);
+	// return results;
+	// }
+	//
 
 }
-
-

@@ -20,7 +20,7 @@ public interface MovieService {
 	
 //	List<int[]> moviesByYear();
 	
-	List<movieByYear> getMovieByYear();
+	List<movieByYear> getMovieByYear(String startDate, String endDate);
 
 //	public List<Task> findTasksByMovieId(Long movieId);
 //	

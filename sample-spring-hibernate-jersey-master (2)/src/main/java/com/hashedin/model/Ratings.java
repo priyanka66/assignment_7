@@ -25,7 +25,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 		@NamedQuery(name = "Ratings.getMovies", query = "select NEW com.hashedin.model.topRatedMovies"
 				+ "(m.movieName ,r.ratings , count(r.ratings)) from Ratings r join r.movie m group by m.movieId "),
 		@NamedQuery(name = "Ratings.getMovieByProfession", query = "SELECT NEW com.hashedin.model.MoviesByProfession"
-				+ "(u.profession,count(m.movieId)) from Ratings r,Movie m , User u group by u.profession"), })
+				+ "(u.profession,count(m.movieId)) from Ratings r,Movie m , User u group by u.profession"),})
+
+//	@NamedQuery(name ="Ratings.getRatedMovie",query="Select m.movieName SUM(r.ratings) from Ratings r "
+//+ "join r.movie m group by movieId")
 public class Ratings {
 
 	@ManyToOne

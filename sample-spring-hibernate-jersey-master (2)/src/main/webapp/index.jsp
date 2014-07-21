@@ -52,11 +52,11 @@
               <form name="myForm" ng-controller="IndexCtrl">
                Start Year <input type ="text" ng-model="startDate" ng-change = " " id="date1" />
                End Year:<input type="text" ng-model="endDate"/>
-                       <input type ="submit"/>        
+                       <input type ="submit" ng-click="submit()">        
               </form>		
                <span ng-repeat="i in items2 	">
                  <p>{{i.year}}</p>
-           	</span>
+           		</span>
            	
            	<p>{{startDate}}</p>
             				
@@ -69,8 +69,8 @@
           <div class=col-md-6>
         	<div google-chart="PieChart" ng-model="data2" class="bigGraph"></div>
         	
-        </div>
-         <div class=col-md-6>
+        	</div>
+         <div class="col-md-6" ng-if="chart">
         	<div google-chart="ColumnChart" ng-model="data3" class="bigGraph"></div>
 		</div>      
     	
