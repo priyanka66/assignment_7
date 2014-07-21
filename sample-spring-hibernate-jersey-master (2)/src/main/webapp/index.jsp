@@ -49,10 +49,10 @@
                     </div>
                 </div>
               <!-- <h4><span style="color:#000;font-weight:bold">Due Date:<input type="date" ng-model="myDate"></span></h4> -->
-              <form name="myForm" ng-controller="IndexCtrl">
+              <form name="myForm" ng-controller="IndexCtrl" ng-submit="submit()">
                Start Year <input type ="text" ng-model="startDate" ng-change = " " id="date1" />
                End Year:<input type="text" ng-model="endDate"/>
-                       <input type ="submit" ng-click="submit()">        
+                        <button type="submit">Submit</button>      
               </form>		
                <span ng-repeat="i in items2 	">
                  <p>{{i.year}}</p>

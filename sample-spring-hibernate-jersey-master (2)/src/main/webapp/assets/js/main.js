@@ -84,7 +84,7 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout,$filter) {
 	$scope.startDate =1993;
 	$scope.endDate =1995;
 	console.log($scope.startDate);
-	$scope.submit=function(){
+//	$scope.submit=function(){
 		$scope.chart=true;
 //		$scope.data3 = {};
 //		$scope.data3.dataTable = new google.visualization.DataTable();
@@ -117,7 +117,7 @@ myApp.controller('IndexCtrl', function($scope, $http, $timeout,$filter) {
 		alert("Error");
 	});
 }
-}
+//}
 //.filter("dateFilter",[function(){
 //	
 //}
